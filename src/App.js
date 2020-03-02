@@ -24,7 +24,6 @@ const App = (props) => {
 };
 
 const mapStateToProps = state => {
-  console.log("full state ", state);
   return {
     carInfo: state
   };

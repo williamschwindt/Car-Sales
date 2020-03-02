@@ -9,19 +9,11 @@ import { addCarFeature, removeCarFeature } from './actions/actions';
 
 const App = (props) => {
 
-  const removeFeature = item => {
-    // dispatch an action here to remove an item
-  };
-
-  const buyItem = item => {
-    // dipsatch an action here to add an item
-  };
-
   return (
     <div className="boxes">
       <div className="box">
         <Header car={props.carInfo.car} />
-        <AddedFeatures car={props.carInfo.car} />
+        <AddedFeatures removeCarFeature={props.removeCarFeature} car={props.carInfo.car} />
       </div>
       <div className="box">
         <AdditionalFeatures addCarFeature={props.addCarFeature} additionalFeatures={props.carInfo.additionalFeatures} />

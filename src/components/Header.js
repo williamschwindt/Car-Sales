@@ -1,6 +1,7 @@
 import React from 'react';
 
 const Header = props => {
+  console.log("car stuff", props);
   return (
     <>
       <figure className="image is-128x128">

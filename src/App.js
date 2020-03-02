@@ -1,17 +1,12 @@
 import React from 'react';
-import { createStore } from 'redux';
+import { connect } from "react-redux";
 
 import Header from './components/Header';
 import AddedFeatures from './components/AddedFeatures';
 import AdditionalFeatures from './components/AdditionalFeatures';
 import Total from './components/Total';
 
-import { rootReducer } from './reducers/index';
-
-export const store = createStore(rootReducer);
-
-const App = () => {
-  const state = {}
+const App = (props) => {
 
   const removeFeature = item => {
     // dispatch an action here to remove an item
@@ -24,15 +19,22 @@ const App = () => {
   return (
     <div className="boxes">
       <div className="box">
-        <Header car={state.car} />
-        <AddedFeatures car={state.car} />
+        <Header car={props.carInfo.car} />
+        <AddedFeatures car={props.carInfo.car} />
       </div>
       <div className="box">
-        <AdditionalFeatures additionalFeatures={state.additionalFeatures} />
-        <Total car={state.car} additionalPrice={state.additionalPrice} />
+        <AdditionalFeatures additionalFeatures={props.carInfo.additionalFeatures} />
+        <Total car={props.carInfo.car} additionalPrice={props.carInfo.additionalPrice} />
       </div>
     </div>
   );
 };
 
-export default App;
+const mapStateToProps = state => {
+  console.log("full state ", state);
+  return {
+    carInfo: state
+  };
+};
+
+export default connect(mapStateToProps, {})(App);
